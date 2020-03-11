@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>582630531922-r90bv7sotshlhmqt79teu1j6crau9dr4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.582630531922-r90bv7sotshlhmqt79teu1j6crau9dr4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDUDtTIcnZnhvZlK9ZF0R-8YZe-N0YXI6Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>582630531922</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.david.KidsDate</string>
+	<key>PROJECT_ID</key>
+	<string>kidsdate-bc4e6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kidsdate-bc4e6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:582630531922:ios:296d7012dc6b21f504508b</string>
+	<key>DATABASE_URL</key>
+	<string>https://kidsdate-bc4e6.firebaseio.com</string>
+</dict>
+</plist>
