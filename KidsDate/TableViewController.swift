@@ -9,27 +9,19 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
+    var event:Event=Event()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return DBHandler.userList.count
+        return DBHandler.eventList.count
     }
 
 
@@ -38,12 +30,28 @@ class TableViewController: UITableViewController {
         let cell=tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventCell
 
         // Configure the cell...
-        cell.txtEventTitle.text=DBHandler.userList[indexPath.row].userName
+        cell.txtEventTitle.text=DBHandler.eventList[indexPath.row].title
+        print(cell.txtEventTitle.text!+" event title")
+        cell.txtEventDetail.text=DBHandler.eventList[indexPath.row].detail
+        cell.txtEventDate.text=DBHandler.eventList[indexPath.row].date
+        cell.txtEventLocation.text=DBHandler.eventList[indexPath.row].location
+        cell.txtEventCategory.text=DBHandler.eventList[indexPath.row].category
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0    }
+        return 230.0    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.event = DBHandler.eventList[indexPath.row]
+        self.performSegue(withIdentifier: "toDetail", sender: self)
+    }
 
+    override func prepare(for segue: UIStoryboardSegue,sender:Any?){
+        if segue.identifier=="toDetail"{
+            let page2=segue.destination as!DetailViewController
+            page2.event=self.event
+        }
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

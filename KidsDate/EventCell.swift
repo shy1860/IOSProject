@@ -10,21 +10,22 @@ import UIKit
 
 class EventCell: UITableViewCell {
 
-    @IBOutlet weak var txtEventDetail: UITextView!
-    @IBOutlet weak var txtEventLocation: UITextField!
-    @IBOutlet weak var txtEventDate: UITextField!
-    @IBOutlet weak var txtEventCategory: UITextField!
-    @IBOutlet weak var txtEventTitle: UITextField!
+    @IBOutlet weak var detailCell: UIView!
+    @IBOutlet weak var txtEventDetail: UILabel!
+    @IBOutlet weak var txtEventLocation: UILabel!
+    @IBOutlet weak var txtEventDate: UILabel!
+    @IBOutlet weak var txtEventCategory: UILabel!
+    @IBOutlet weak var txtEventTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    /*override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
+    }*/
 
 }

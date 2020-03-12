@@ -10,8 +10,9 @@ import Foundation
 import SQLite3
     
 class DBHandler{
-    
+    let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
     static var userList=[User]()
+    static var eventList=[Event]()
     var stmt:OpaquePointer?
     init()
     {
@@ -73,26 +74,29 @@ class DBHandler{
       }
     func insertEvent(event:Event){
         print("Start to create Event")
-        let insertQ="INSERT INTO EVENT (title,detail,date,location,category,ownerID) VALUES(?,?,?,?,?,?)"
+        print("Title:" + event.title+" Detail: " + event.detail)
+        print(" Location:  "+event.location+" Date:  "+event.date)
+        print(" Category: "+event.category+" OwnerID: "+event.ownerID)
+        let insertQ="INSERT INTO EVENTS (title,detail,date,location,category,ownerID) VALUES(?,?,?,?,?,?)"
         if sqlite3_prepare(db,insertQ,-1,&stmt,nil) != SQLITE_OK{
-            print("Error binding query insert into evvnts")
+            print("Error binding query insert into events")
         }
-        if sqlite3_bind_text(stmt, 1, event.title, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 1, event.title, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding title")
         }
-        if sqlite3_bind_text(stmt, 2, event.detail, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 2, event.detail, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding detail")
         }
-        if sqlite3_bind_text(stmt, 3, event.date, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 3, event.date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding date")
         }
-        if sqlite3_bind_text(stmt, 4, event.location, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 4, event.location, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding location")
         }
-        if sqlite3_bind_text(stmt, 5, event.category, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 5, event.category, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding category")
         }
-        if sqlite3_bind_text(stmt, 6, event.ownerID, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 6, event.ownerID, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding ownerID")
         }
         if sqlite3_step(stmt) == SQLITE_DONE {
@@ -152,6 +156,44 @@ class DBHandler{
             DBHandler.userList.append(User(id: Int(id), user: String(describing: name), pwd: String(password)))
            }
        }
+    func readEventsValues(){
+print("Start to query events")
+        //first empty the list of heroes
+     DBHandler.eventList.removeAll()
+
+        //this is our select query
+        let queryString = "SELECT * FROM EVENTS"
+
+        //statement pointer
+        var stmt:OpaquePointer?
+
+        //preparing the query
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+
+        //traversing through all the records
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+         print(id)
+            let title = String(cString: sqlite3_column_text(stmt, 1))
+         print(title)
+            let detail = String(cString:sqlite3_column_text(stmt, 2))
+            print(detail)
+            let date = String(cString: sqlite3_column_text(stmt, 3))
+            print(date)
+            let location = String(cString: sqlite3_column_text(stmt, 4))
+            print(location)
+            let category = String(cString: sqlite3_column_text(stmt, 5))
+            print(category)
+            let ownerID = String(cString: sqlite3_column_text(stmt, 6))
+            print(ownerID)
+            //adding values to list
+         DBHandler.eventList.append(Event(id: Int(id), title: title, detail: detail, date: date, location: location, category: category, ownerID: ownerID))
+        }
+    }
     func getUser(userName:String)->User{
         let queryString = "SELECT * FROM USERS WHERE NAME='"+userName+"';"
         var user=User()
