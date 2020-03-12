@@ -15,17 +15,18 @@ class ViewController: UIViewController {
     @IBOutlet var lbl: UIView!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var txtPWD: UITextField!
+    let db:DBHandler=DBHandler()
 
-    @IBAction func btnLogin(_ sender: UIButton) {
-          let user=User(user:txtUserName.text! ,pwd:txtPWD.text!)
-          createdOn.text=user.createdAt;
-        createUser(user: user)
+    @IBAction func btnLogin(_ sender: Any) {
+        User.userLogin=User(user:txtUserName.text! ,pwd:txtPWD.text!)
+        createdOn.text=User.userLogin.createdAt;
+        //db.createUser(user: User.userLogin)
+        db.readUsersValues()
     }
     override func prepare(for segue: UIStoryboardSegue,sender:Any?){
         let user=User(user:txtUserName.text! ,pwd:txtPWD.text!)
         if(segue.identifier == "toMain"){
-            let page2=segue.destination as! MainMenu
-            page2.user1=user
+           
         }
         if(segue.identifier == "toReg"){
             

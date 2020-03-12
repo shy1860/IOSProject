@@ -7,7 +7,9 @@
 //
 
 import Foundation
+
 class User{
+    static var userLogin:User = User()
     var id:Int=0;
     var userName:String="";
     var password:String="";
@@ -51,3 +53,58 @@ class User{
     }
     
 }
+
+class Event{
+    static var eventToPast:Event = Event()
+    var id:Int=0;
+    var title:String="";
+    var detail:String="";
+    var date:String="";
+    var location:String="";
+    var category:String="";
+    var ownerID:String="";
+    var createdAt:String="";
+    init (){
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateStyle = .full
+
+        dateFormatter.timeStyle = .full
+
+        self.createdAt = dateFormatter.string(from: currentDate)
+    }
+    init(title:String,detail:String,date:String,location:String,category:String,ownerID:String) {
+        self.title=title;
+        self.detail=detail;
+        self.location=location;
+        self.date=date;
+        self.category=category;
+        self.ownerID=ownerID;
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateStyle = .full
+
+        dateFormatter.timeStyle = .full
+
+        self.createdAt = dateFormatter.string(from: currentDate)
+        
+    }
+    init(id:Int,title:String,detail:String,date:String,location:String,category:String,ownerID:String) {
+        self.id=id
+        self.title=title;
+        self.detail=detail;
+        self.location=location;
+        self.date=date;
+        self.category=category;
+        self.ownerID=ownerID;
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .full
+        self.createdAt = dateFormatter.string(from: currentDate)
+    }
+    
+}
+

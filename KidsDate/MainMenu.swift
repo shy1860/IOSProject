@@ -8,29 +8,14 @@
 
 import UIKit
 
-class MainMenu: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class MainMenu: UIViewController {
     var user1=User()
-    @IBOutlet  var tableUserVu: [UITableView]!
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           //this method is giving the row count of table view which is
-           //total number of heroes in the list
-           return userList.count
-       }
-    
-    
-       //this method is binding the hero name with the tableview cell
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-           let user: User
-           user = userList[indexPath.row]
-           cell.textLabel?.text = user.userName
-           return cell
-       }
+    var db=DBHandler()
     override func viewDidLoad() {
         super.viewDidLoad()
-        readValues()
-        
+        self.navigationItem.backBarButtonItem?.title="Logout"
         // Do any additional setup after loading the view.
+   
     }
     
     override func prepare(for segue: UIStoryboardSegue,sender:Any?){
