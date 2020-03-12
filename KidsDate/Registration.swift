@@ -32,7 +32,18 @@ class Registration: UIViewController {
             }
             else{
                 print("All good")
-                self.performSegue(withIdentifier: "regToLogin", sender: self)
+                var user:User=db.getUser(userName: txtRegUName.text!)
+                print(user.userName)
+                if user.userName == "" {
+                    print(txtRegUName.text)
+                     db.createUser(user: User(user: txtRegUName.text!, pwd: txtRegP.text!))
+                                    self.performSegue(withIdentifier: "regToLogin", sender: self)
+                }
+                else{
+                    thisLable.text="User exists"
+                }
+               
+
                }
         }
     }

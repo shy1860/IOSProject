@@ -40,7 +40,7 @@ class DBHandler{
         }
     }
     func createUserTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS USERS(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,password TEXT,createAT DATETIME DEFAULT CURRENT_TIMESTAMP)"
+        let createTableString = "CREATE TABLE IF NOT EXISTS USERS(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE,password TEXT,createAT DATETIME DEFAULT CURRENT_TIMESTAMP)"
           var createTableStatement: OpaquePointer? = nil
           if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
           {
@@ -116,6 +116,7 @@ class DBHandler{
             print("Error binding password")
         }
         if sqlite3_step(stmt) == SQLITE_DONE {
+            print(user.userName)
             print("Users saved successfully")
         }else{
             print(sqlite3_step(stmt))
@@ -152,7 +153,7 @@ class DBHandler{
            }
        }
     func getUser(userName:String)->User{
-        let queryString = "SELECT * FROM USERS WHERE NAME="+userName
+        let queryString = "SELECT * FROM USERS WHERE NAME='"+userName+"';"
         var user=User()
         //statement pointer
         var stmt:OpaquePointer?
