@@ -19,7 +19,7 @@ class Registration: UIViewController {
     @IBAction func btnDone1(_ sender: Any) {
         print("button pressed")
         if !isValidEmail(email: (txtRegUName.text)!){
-            message="This is not a valid email address"
+            thisLable.text="This is not a valid email address"
             print("This is not a valid email")
             view.layoutIfNeeded() 
             return
@@ -39,7 +39,6 @@ class Registration: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        thisLable.text="message"
         
         // Do any additional setup after loading the view.
     }
