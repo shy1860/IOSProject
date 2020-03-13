@@ -11,12 +11,17 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet weak var txtDetail: UITextView!
     var event:Event=Event();
+    
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.sendSubviewToBack(imgView)
+
+        print(event.detail+"this is event detail page")
         lblDate.text=event.date
         lblCategory.text=event.category
         lblLocation.text=event.location

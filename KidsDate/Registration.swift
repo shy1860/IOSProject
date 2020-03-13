@@ -37,7 +37,12 @@ class Registration: UIViewController {
                 if user.userName == "" {
                     print(txtRegUName.text)
                      db.createUser(user: User(user: txtRegUName.text!, pwd: txtRegP.text!))
-                                    self.performSegue(withIdentifier: "regToLogin", sender: self)
+                    thisLable.text="You have successfully created your account!"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                       // Your code with navigate to another controller
+                        self.performSegue(withIdentifier: "regToLogin", sender: self)
+                    }
+                                    
                 }
                 else{
                     thisLable.text="User exists"

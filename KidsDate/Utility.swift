@@ -217,6 +217,8 @@ print("Start to query events")
             user.createdAt = String(cString: sqlite3_column_text(stmt, 3))
             
         }
+        print("User name: "+userName)
+        print(user.userName+user.password)
         return user
     }
 
