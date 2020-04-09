@@ -57,7 +57,7 @@ class DBHandler{
           sqlite3_finalize(createTableStatement)
       }
     func createEventTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS EVENTS(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT,detail TEXT,date DATETIME,location TEXT,category TEXT,ownerID TEXT,createAT DATETIME DEFAULT CURRENT_TIMESTAMP)"
+        let createTableString = "CREATE TABLE IF NOT EXISTS EVENTS(id INTEGER PRIMARY KEY AUTOINCREMENT, ownerEmail Text,title TEXT,detail TEXT,date DATETIME,location TEXT,category TEXT,ownerID TEXT,createAT DATETIME DEFAULT CURRENT_TIMESTAMP)"
           var createTableStatement: OpaquePointer? = nil
           if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
           {
@@ -72,7 +72,7 @@ class DBHandler{
           }
           sqlite3_finalize(createTableStatement)
       }
-    func insertEvent(event:Event){
+    func createEvent(event:Event,user:User){
         print("Start to create Event")
         print("Title:" + event.title+" Detail: " + event.detail)
         print(" Location:  "+event.location+" Date:  "+event.date)
@@ -99,6 +99,7 @@ class DBHandler{
         if sqlite3_bind_text(stmt, 6, event.ownerID, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding ownerID")
         }
+
         if sqlite3_step(stmt) == SQLITE_DONE {
             print("Event saved successfully")
         }else{
@@ -160,8 +161,53 @@ class DBHandler{
             DBHandler.userList.append(User(id: Int(id), user: String(describing: name), pwd: String(password)))
            }
        }
+    func deleteEvent(event :Event){
+        let deleteStatementString = "DELETE FROM Contact WHERE Id = ?;"
+        var deleteStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) ==
+            SQLITE_OK {
+
+            if sqlite3_bind_int(deleteStatement, 1, Int32(event.id)) != SQLITE_OK {
+                print("Error binding name")
+            }
+            
+            
+          if sqlite3_step(deleteStatement) == SQLITE_DONE {
+            print("\nSuccessfully deleted row.")
+          } else {
+            print("\nCould not delete row.")
+          }
+        } else {
+          print("\nDELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
+        
+
+    }
+    func updateEvent(event :Event){
+       let updateStatementString = "UPDATE Contact SET Name = 'Adam' WHERE Id = ?;"
+        var deleteStatement: OpaquePointer?
+          var updateStatement: OpaquePointer?
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==
+            SQLITE_OK {
+            
+            if sqlite3_bind_int(updateStatement, 1, Int32(event.id)) != SQLITE_OK {
+                           print("Error binding eventID")
+                       }
+          if sqlite3_step(updateStatement) == SQLITE_DONE {
+            print("\nSuccessfully updated row.")
+          } else {
+            print("\nCould not update row.")
+          }
+        } else {
+          print("\nUPDATE statement is not prepared")
+        }
+        sqlite3_finalize(updateStatement)
+
+    }
     func readEventsValues(){
-print("Start to query events")
+        print("Start to query events")
         //first empty the list of heroes
      DBHandler.eventList.removeAll()
 
