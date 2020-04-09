@@ -110,21 +110,25 @@ class DBHandler{
     func createUser(user:User){
         print("Start to create users")
         let insertQ="INSERT INTO USERS (name,password) VALUES(?,?)"
+        //let insertQ="INSERT INTO USERS (name,password) VALUES('cc','dd');"
         if sqlite3_prepare(db,insertQ,-1,&stmt,nil) != SQLITE_OK{
             print("Error binding query insert into users")
         }
-        if sqlite3_bind_text(stmt, 1, user.userName, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 1, user.userName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding name")
         }
-        if sqlite3_bind_text(stmt, 2, user.password, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 2, user.password, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding password")
         }
+        
         if sqlite3_step(stmt) == SQLITE_DONE {
             print(user.userName)
             print("Users saved successfully")
         }else{
             print(sqlite3_step(stmt))
         }
+        print(insertQ)
+        print(user.userName+user.password)
     }
      func readUsersValues(){
 
@@ -195,7 +199,8 @@ print("Start to query events")
         }
     }
     func getUser(userName:String)->User{
-        let queryString = "SELECT * FROM USERS WHERE NAME='"+userName+"';"
+        let queryString = "SELECT * FROM USERS WHERE NAME LIKE'"+userName+"';"
+        print(queryString)
         var user=User()
         //statement pointer
         var stmt:OpaquePointer?
