@@ -45,6 +45,8 @@ class TableViewController: UITableViewController {
         self.event = DBHandler.eventList[indexPath.row]
         self.performSegue(withIdentifier: "toDetail", sender: self)
     }
+    
+    
 
     override func prepare(for segue: UIStoryboardSegue,sender:Any?){
         if segue.identifier=="toDetail"{

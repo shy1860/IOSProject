@@ -164,7 +164,7 @@ class DBHandler{
             DBHandler.userList.append(User(id: Int(id), user: String(describing: name), pwd: String(password)))
            }
        }
-    func deleteEvent(event :Event){
+    func deleteEvent(event:Event){
         let deleteStatementString = "DELETE FROM Contact WHERE Id = ?;"
         var deleteStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) ==
@@ -188,7 +188,7 @@ class DBHandler{
         
 
     }
-    func updateEvent(event :Event){
+    func updateEvent(event:Event){
        let updateStatementString = "UPDATE Contact SET Name = 'Adam' WHERE Id = ?;"
           var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==

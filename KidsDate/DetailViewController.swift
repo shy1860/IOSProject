@@ -11,12 +11,28 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet weak var txtDetail: UITextView!
     var event:Event=Event();
+    var user=User.currentUser;
+    var db:DBHandler=DBHandler();
     
+    
+    @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBAction func btnDelete(_ sender: Any) {
+        
+        db.deleteEvent(event:event)
+        print("event has been deleted")
+        self.performSegue(withIdentifier: "backToTable", sender: self)
+        
+        
+    }
+    @IBAction func btnEdit(_ sender: Any) {
+        print("editing")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.sendSubviewToBack(imgView)
@@ -28,6 +44,21 @@ class DetailViewController: UIViewController {
         lblTitle.text=event.title
         txtDetail.text=event.detail
         // Do any additional setup after loading the view.
+//        print(user.id)
+//        print(event.ownerID)
+        if String(user.id) != String(event.ownerID){
+            btnDelete.isHidden = true;
+            btnEdit.isHidden = true;
+            
+            print(String(user.id) + "userid")
+            print(event.ownerID + "ownerid are differrent")
+           
+
+        }
+        
+        
+        
+        
     }
 
     
