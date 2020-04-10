@@ -14,6 +14,8 @@ class CreateViewController: UIViewController {
     @IBAction func btnSubmitCrt(_ sender: Any) {
         db.createEvent(event: Event(title: txtTitle.text!, detail: txtDetails.text!, date: txtDate.text!, location: txtLocation.text!, category: txtCategory.text!,ownerID: String(user.id)), user: user)
         
+        self.performSegue(withIdentifier: "segue1", sender: self)
+        
         
     }
     
