@@ -9,7 +9,9 @@
 import UIKit
 
 class CreateViewController: UIViewController {
-
+    let datePicker = UIDatePicker()
+    var user=User();
+    var db:DBHandler=DBHandler()
     
     @IBAction func btnSubmitCrt(_ sender: Any) {
         db.createEvent(event: Event(title: txtTitle.text!, detail: txtDetails.text!, date: txtDate.text!, location: txtLocation.text!, category: txtCategory.text!,ownerID: String(user.id)), user: user)
@@ -25,10 +27,7 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var txtLocation: UITextField!
     @IBOutlet weak var txtTitle: UITextField!
     
-    let datePicker = UIDatePicker()
-    var user=User();
-    var db:DBHandler=DBHandler()
-    
+
     
     
     override func viewDidLoad() {
@@ -36,7 +35,7 @@ class CreateViewController: UIViewController {
         
         createDatePicker()
         
-       
+        print(user.userName+"user name")
         
 
         // Do any additional setup after loading the view.

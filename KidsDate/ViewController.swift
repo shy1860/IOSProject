@@ -17,12 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtPWD: UITextField!
     @IBOutlet weak var lblWarning: UILabel!
     let db:DBHandler=DBHandler()
+    var currentUser=User()
 
     @IBAction func btnLogin(_ sender: Any) {
         
         User.userLogin=User(user:txtUserName.text! ,pwd:txtPWD.text!)
         print(txtUserName.text!+txtPWD.text!)
-        var currentUser:User = db.getUser(userName: txtUserName.text!)
+        currentUser = db.getUser(userName: txtUserName.text!)
         if currentUser.userName.isEqual(""){
             lblWarning.text="No such a user!"
         }else{
@@ -56,8 +57,8 @@ class ViewController: UIViewController {
         if(segue.identifier == "toCreate"){
              let createController = segue.destination as!
             CreateViewController
-            createController.user = user
-            
+            createController.user = currentUser
+            print(user.userName+" create contoller user name!")
         }
         if(segue.identifier == "toReset"){
             
