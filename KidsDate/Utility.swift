@@ -77,7 +77,7 @@ class DBHandler{
         print("Title:" + event.title+" Detail: " + event.detail)
         print(" Location:  "+event.location+" Date:  "+event.date)
         print(" Category: "+event.category+" OwnerID: "+event.ownerID)
-        let insertQ="INSERT INTO EVENTS (title,detail,date,location,category,ownerID) VALUES(?,?,?,?,?,?)"
+        let insertQ="INSERT INTO EVENTS (title,detail,date,location,category,ownerID,ownerEmail) VALUES(?,?,?,?,?,?,?)"
         if sqlite3_prepare(db,insertQ,-1,&stmt,nil) != SQLITE_OK{
             print("Error binding query insert into events")
         }
@@ -98,6 +98,9 @@ class DBHandler{
         }
         if sqlite3_bind_text(stmt, 6, event.ownerID, -1, SQLITE_TRANSIENT) != SQLITE_OK {
             print("Error binding ownerID")
+        }
+        if sqlite3_bind_text(stmt, 7, user.userName, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            print("Error binding ownerEmail")
         }
 
         if sqlite3_step(stmt) == SQLITE_DONE {
@@ -187,7 +190,6 @@ class DBHandler{
     }
     func updateEvent(event :Event){
        let updateStatementString = "UPDATE Contact SET Name = 'Adam' WHERE Id = ?;"
-        var deleteStatement: OpaquePointer?
           var updateStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==
             SQLITE_OK {
@@ -228,20 +230,22 @@ class DBHandler{
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
          print(id)
-            let title = String(cString: sqlite3_column_text(stmt, 1))
+            let title = String(cString: sqlite3_column_text(stmt, 2))
          print(title)
-            let detail = String(cString:sqlite3_column_text(stmt, 2))
+            let detail = String(cString:sqlite3_column_text(stmt, 3))
             print(detail)
-            let date = String(cString: sqlite3_column_text(stmt, 3))
+            let date = String(cString: sqlite3_column_text(stmt, 4))
             print(date)
-            let location = String(cString: sqlite3_column_text(stmt, 4))
+            let location = String(cString: sqlite3_column_text(stmt, 5))
             print(location)
-            let category = String(cString: sqlite3_column_text(stmt, 5))
+            let category = String(cString: sqlite3_column_text(stmt, 6))
             print(category)
-            let ownerID = String(cString: sqlite3_column_text(stmt, 6))
+            let ownerID = String(cString: sqlite3_column_text(stmt, 7))
+            print(ownerID)
+            let ownerEmail = String(cString: sqlite3_column_text(stmt, 1))
             print(ownerID)
             //adding values to list
-         DBHandler.eventList.append(Event(id: Int(id), title: title, detail: detail, date: date, location: location, category: category, ownerID: ownerID))
+         DBHandler.eventList.append(Event(id: Int(id), title: title, detail: detail, date: date, location: location, category: category, ownerID: ownerID,ownerEmail: ownerEmail))
         }
     }
     func getUser(userName:String)->User{

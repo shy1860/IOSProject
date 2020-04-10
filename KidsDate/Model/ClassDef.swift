@@ -68,6 +68,8 @@ class Event{
     var category:String="";
     var ownerID:String="";
     var createdAt:String="";
+    var ownerEmail:String="";
+
     init (){
         let currentDate = Date()
         let dateFormatter = DateFormatter()
@@ -95,7 +97,7 @@ class Event{
         self.createdAt = dateFormatter.string(from: currentDate)
         
     }
-    init(id:Int,title:String,detail:String,date:String,location:String,category:String,ownerID:String) {
+    init(id:Int,title:String,detail:String,date:String,location:String,category:String,ownerID:String,ownerEmail:String) {
         self.id=id
         self.title=title;
         self.detail=detail;
@@ -108,6 +110,7 @@ class Event{
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .full
         self.createdAt = dateFormatter.string(from: currentDate)
+        self.ownerEmail=ownerEmail
     }
     
 }
