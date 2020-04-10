@@ -10,7 +10,13 @@ import UIKit
 
 class CreateViewController: UIViewController {
 
-    @IBOutlet weak var btnSubmitCreate: UIButton!
+    
+    @IBAction func btnSubmitCrt(_ sender: Any) {
+        db.createEvent(event: Event(title: txtTitle.text!, detail: txtDetails.text!, date: txtDate.text!, location: txtLocation.text!, category: txtCategory.text!,ownerID: String(user.id)), user: user)
+        
+        
+    }
+    
     @IBOutlet weak var txtDetails: UITextField!
     @IBOutlet weak var txtCategory: UITextField!
     @IBOutlet weak var txtDate: UITextField!
@@ -18,14 +24,17 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var txtTitle: UITextField!
     
     let datePicker = UIDatePicker()
-    var user:User=User();
+    var user=User();
     var db:DBHandler=DBHandler()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createDatePicker()
+        
+       
         
 
         // Do any additional setup after loading the view.
@@ -55,17 +64,15 @@ class CreateViewController: UIViewController {
         txtDate.inputAccessoryView = toolbar
 
         txtDate.inputView = datePicker
-        //datePicker.datePickerMode = .date
 
 
     }
 
     @objc func donePressed(){
-        let dateFormatter = DateFormatter()
-        let strDate = dateFormatter.string(from: datePicker.date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let strDate = formatter.string(from: datePicker.date)
         txtDate.text = strDate
-
-
        self.view.endEditing(true)
     }
     

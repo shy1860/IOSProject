@@ -14,6 +14,8 @@ class User{
     var userName:String="";
     var password:String="";
     var createdAt:String="";
+    
+    
     init (){
         let currentDate = Date()
         let dateFormatter = DateFormatter()
@@ -51,6 +53,8 @@ class User{
         self.createdAt = dateFormatter.string(from: currentDate)
         
     }
+    
+    
     
 }
 
