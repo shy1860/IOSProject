@@ -14,7 +14,7 @@ class User{
     var userName:String="";
     var password:String="";
     var createdAt:String="";
-    
+    static var currentUser=User();
     
     init (){
         let currentDate = Date()

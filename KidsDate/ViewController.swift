@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblWarning: UILabel!
     let db:DBHandler=DBHandler()
     var currentUser=User()
-
     @IBAction func btnLogin(_ sender: Any) {
         
         User.userLogin=User(user:txtUserName.text! ,pwd:txtPWD.text!)
@@ -38,6 +37,7 @@ class ViewController: UIViewController {
                 db.createEvent(event: Event(title: "Hiking", detail: "No more skills, just walk! Entry fee $100.00", date: "202003200800", location: "Algonquin Park", category: "Outdoor", ownerID: "2"), user: currentUser)
                 db.createEvent(event: Event(title: "Crafting seminar", detail: "Any age welcome, bring your own tools", date: "202004021000", location: "Rogers Center", category: "Indoor", ownerID: "21"), user: currentUser)
                 db.readEventsValues()
+                User.currentUser=currentUser;
                 self.performSegue(withIdentifier: "toMain", sender: self)
             }
         }
@@ -46,20 +46,16 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue,sender:Any?){
         let user=User(user:txtUserName.text! ,pwd:txtPWD.text!)
        
-        
-        
+        print(type(of: segue.destination))
         if(segue.identifier == "toMain"){
-           
+           print(user.userName+" To List contoller user name!")
+            let tableViewController = segue.destination as! TabBarController
+            tableViewController.user = currentUser
         }
         if(segue.identifier == "toReg"){
             
         }
-        if(segue.identifier == "toCreate"){
-             let createController = segue.destination as!
-            CreateViewController
-            createController.user = currentUser
-            print(user.userName+" create contoller user name!")
-        }
+
         if(segue.identifier == "toReset"){
             
         }else{

@@ -10,7 +10,7 @@ import UIKit
 
 class CreateViewController: UIViewController {
     let datePicker = UIDatePicker()
-    var user=User();
+    var user=User.currentUser;
     var db:DBHandler=DBHandler()
     
     @IBAction func btnSubmitCrt(_ sender: Any) {
@@ -34,7 +34,6 @@ class CreateViewController: UIViewController {
         super.viewDidLoad()
         
         createDatePicker()
-        
         print(user.userName+"user name")
         
 

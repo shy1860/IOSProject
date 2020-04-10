@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     var event:Event=Event()
+    var user=User()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
