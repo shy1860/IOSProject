@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
     var user=User()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source

@@ -36,7 +36,8 @@ class DetailViewController: UIViewController {
     @IBAction func editBtn(_ sender: Any) {
         
         print("going to update event")
-        self.performSegue(withIdentifier: "toEdit", sender: self)
+        
+        self.performSegue(withIdentifier: "backToTab", sender: self)
               
     }
     override func prepare(for segue: UIStoryboardSegue,sender:Any?){
