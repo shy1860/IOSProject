@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.sendSubviewToBack(imgView)
+       
 
         print(event.detail+"this is event detail page")
         lblDate.text=event.date
