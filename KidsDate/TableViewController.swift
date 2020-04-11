@@ -11,8 +11,11 @@ import UIKit
 class TableViewController: UITableViewController {
     var event:Event=Event()
     var user=User()
+    var db:DBHandler=DBHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        db.readEventsValues()
         self.tableView.reloadData()
     }
 

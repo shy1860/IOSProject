@@ -23,10 +23,16 @@
 		639C017A2440FDCF00C867E0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C01792440FDCF00C867E0 /* TabBarController.swift */; };
 		63C779372419D40700D331F7 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C779362419D40700D331F7 /* EventCell.swift */; };
 		63C7793D2419DA1D00D331F7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C7793C2419DA1D00D331F7 /* TableViewController.swift */; };
-		63F04929241801FA00712B85 /* lpfgqk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63F04928241801FA00712B85 /* lpfgqk.jpg */; };
 		63F0492B2418096F00712B85 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F0492A2418096F00712B85 /* Utility.swift */; };
 		63F0492D24180CFE00712B85 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F0492C24180CFE00712B85 /* Registration.swift */; };
 		B51C0C742441403600EE6F6E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C0C732441403600EE6F6E /* EditViewController.swift */; };
+		B5A03EF9244187780035C650 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03EF8244187780035C650 /* 2.jpg */; };
+		B5A03EFB244188850035C650 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03EFA244188850035C650 /* 1.jpg */; };
+		B5A03EFD24418A470035C650 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03EFC24418A470035C650 /* 12.jpg */; };
+		B5A03F0124418D020035C650 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03F0024418D010035C650 /* 12.jpg */; };
+		B5A03F0524418F000035C650 /* 1234.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03F0424418EFF0035C650 /* 1234.jpg */; };
+		B5A03F07244191FE0035C650 /* 111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03F06244191FE0035C650 /* 111.jpg */; };
+		B5A03F09244198DD0035C650 /* base.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5A03F08244198DD0035C650 /* base.jpg */; };
 		B5D84998243FED4100C7C921 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D84997243FED4100C7C921 /* CreateViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,10 +55,16 @@
 		639C01792440FDCF00C867E0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		63C779362419D40700D331F7 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		63C7793C2419DA1D00D331F7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		63F04928241801FA00712B85 /* lpfgqk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lpfgqk.jpg; sourceTree = "<group>"; };
 		63F0492A2418096F00712B85 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		63F0492C24180CFE00712B85 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		B51C0C732441403600EE6F6E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B5A03EF8244187780035C650 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = ../../2.jpg; sourceTree = "<group>"; };
+		B5A03EFA244188850035C650 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = ../../1.jpg; sourceTree = "<group>"; };
+		B5A03EFC24418A470035C650 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 12.jpg; path = ../../12.jpg; sourceTree = "<group>"; };
+		B5A03F0024418D010035C650 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 12.jpg; path = ../../12.jpg; sourceTree = "<group>"; };
+		B5A03F0424418EFF0035C650 /* 1234.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1234.jpg; path = ../../1234.jpg; sourceTree = "<group>"; };
+		B5A03F06244191FE0035C650 /* 111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 111.jpg; path = ../../111.jpg; sourceTree = "<group>"; };
+		B5A03F08244198DD0035C650 /* base.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = base.jpg; path = ../../base.jpg; sourceTree = "<group>"; };
 		B5D84997243FED4100C7C921 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,10 +99,16 @@
 		6378C42624167FA000470367 /* KidsDate */ = {
 			isa = PBXGroup;
 			children = (
+				B5A03F08244198DD0035C650 /* base.jpg */,
+				B5A03F0024418D010035C650 /* 12.jpg */,
+				B5A03EFC24418A470035C650 /* 12.jpg */,
+				B5A03F06244191FE0035C650 /* 111.jpg */,
+				B5A03F0424418EFF0035C650 /* 1234.jpg */,
+				B5A03EFA244188850035C650 /* 1.jpg */,
+				B5A03EF8244187780035C650 /* 2.jpg */,
 				6378C43C2416804900470367 /* Model */,
 				6378C42724167FA000470367 /* AppDelegate.swift */,
 				6378C42924167FA000470367 /* SceneDelegate.swift */,
-				63F04928241801FA00712B85 /* lpfgqk.jpg */,
 				6390D85E241AF99500A4BA2E /* img1.jpg */,
 				6390D862241AFAC700A4BA2E /* img3.jpg */,
 				6378C42B24167FA000470367 /* ViewController.swift */,
@@ -189,14 +207,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A03EFB244188850035C650 /* 1.jpg in Resources */,
+				B5A03F0124418D020035C650 /* 12.jpg in Resources */,
+				B5A03EF9244187780035C650 /* 2.jpg in Resources */,
+				B5A03F07244191FE0035C650 /* 111.jpg in Resources */,
 				6390D865241B0E3F00A4BA2E /* img4.jpg in Resources */,
 				6378C43424167FA200470367 /* LaunchScreen.storyboard in Resources */,
+				B5A03F09244198DD0035C650 /* base.jpg in Resources */,
 				6390D85F241AF99500A4BA2E /* img1.jpg in Resources */,
-				63F04929241801FA00712B85 /* lpfgqk.jpg in Resources */,
 				6390D863241AFAC700A4BA2E /* img3.jpg in Resources */,
+				B5A03EFD24418A470035C650 /* 12.jpg in Resources */,
 				6378C43124167FA200470367 /* Assets.xcassets in Resources */,
 				6390D861241AFAC000A4BA2E /* img2.jpg in Resources */,
 				6378C42F24167FA000470367 /* Main.storyboard in Resources */,
+				B5A03F0524418F000035C650 /* 1234.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
