@@ -165,7 +165,7 @@ class DBHandler{
            }
        }
     func deleteEvent(event:Event){
-        let deleteStatementString = "DELETE FROM Contact WHERE Id = ?;"
+        let deleteStatementString = "DELETE FROM EVENTS WHERE Id = ?;"
         var deleteStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) ==
             SQLITE_OK {
