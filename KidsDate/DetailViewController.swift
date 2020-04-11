@@ -22,6 +22,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBAction func btnDetailLogout(_ sender: Any) {
+         self.performSegue(withIdentifier: "detailToLogin", sender: self)
+    }
     @IBAction func btnDelete(_ sender: Any) {
         
         db.deleteEvent(event:event)

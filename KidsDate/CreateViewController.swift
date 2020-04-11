@@ -13,6 +13,11 @@ class CreateViewController: UIViewController {
     var user=User.currentUser;
     var db:DBHandler=DBHandler()
     
+    @IBAction func btnCrLogOut(_ sender: Any) {
+        self.performSegue(withIdentifier: "createToLogin", sender: self)
+        
+    }
+    @IBOutlet weak var btnCrLogout: UIButton!
     @IBAction func btnSubmitCrt(_ sender: Any) {
         db.createEvent(event: Event(title: txtTitle.text!, detail: txtDetails.text!, date: txtDate.text!, location: txtLocation.text!, category: txtCategory.text!,ownerID: String(user.id)), user: user)
         
