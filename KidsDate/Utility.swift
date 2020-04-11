@@ -189,14 +189,30 @@ class DBHandler{
 
     }
     func updateEvent(event:Event){
-       let updateStatementString = "UPDATE Contact SET Name = 'Adam' WHERE Id = ?;"
+       let updateStatementString = "UPDATE Events SET title = ?,detail=?,date=?,location=?,category=? WHERE Id = ?;"
           var updateStatement: OpaquePointer?
+        print(event.title+" ||||||"+event.detail)
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==
             SQLITE_OK {
-            
-            if sqlite3_bind_int(updateStatement, 1, Int32(event.id)) != SQLITE_OK {
+            print(event.title+" "+event.detail)
+            if sqlite3_bind_int(updateStatement, 6, Int32(event.id)) != SQLITE_OK {
                            print("Error binding eventID")
                        }
+            if sqlite3_bind_text(updateStatement, 1, event.title, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+                print("Error binding title")
+            }
+            if sqlite3_bind_text(updateStatement, 2, event.detail, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+                print("Error binding detail")
+            }
+            if sqlite3_bind_text(updateStatement, 3, event.date, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+                print("Error binding date")
+            }
+            if sqlite3_bind_text(updateStatement, 4, event.location, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+                print("Error binding location")
+            }
+            if sqlite3_bind_text(updateStatement, 5, event.category, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+                print("Error binding category")
+            }
           if sqlite3_step(updateStatement) == SQLITE_DONE {
             print("\nSuccessfully updated row.")
           } else {

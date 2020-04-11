@@ -16,6 +16,12 @@ class EditViewController: UIViewController {
 
     
     @IBAction func btnSave(_ sender: Any) {
+        event.title=txtEditTitle.text!
+        event.location=txtEditLocation.text!
+        event.date=txtEditDate.text!
+        event.category=txtEditCategory.text!
+        event.detail=txtEditDetail.text!
+        
         db.updateEvent(event: event)
         self.performSegue(withIdentifier: "editBackToTable", sender: self)
         

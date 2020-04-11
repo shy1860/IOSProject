@@ -33,6 +33,20 @@ class DetailViewController: UIViewController {
     @IBAction func btnEdit(_ sender: Any) {
         print("editing")
     }
+    @IBAction func editBtn(_ sender: Any) {
+        
+        print("going to update event")
+        self.performSegue(withIdentifier: "toEdit", sender: self)
+              
+    }
+    override func prepare(for segue: UIStoryboardSegue,sender:Any?){
+        if segue.identifier=="toEdit"{
+            let page2=segue.destination as! EditViewController
+            page2.event=self.event
+            page2.user=self.user
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.sendSubviewToBack(imgView)
